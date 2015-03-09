@@ -1,9 +1,33 @@
+var Preview = React.createClass({
+
+	render: function() {
+	
+		var elem = <h4>Preview</h4>
+		
+		if(this.props.data)
+			elem = this.props.data;
+	
+		console.log(this.props.data);
+		return elem;
+	
+	}
+
+});
+
 var SpotifyResultViewer = React.createClass({
+	getInitialState: function(){
+		return {previewData: null};
+	},
 	handleSelection: function(selectedElement) {
 		
 		if(selectedElement.type=='track')
-			React.render(<SpotifyTrackPreview trackId={selectedElement.id}/>, document.getElementById('preview'));
-		
+			this.setState({previewData: <SpotifyTrackPreview trackId={selectedElement.id}/>});
+			
+		if(selectedElement.type=='artist')
+			this.setState({previewData: <SpotifyArtistPreview artistId={selectedElement.id}/>});
+			
+		if(selectedElement.type=='album')
+			this.setState({previewData: <SpotifyAlbumPreview albumId={selectedElement.id}/>});
 	},
 	render: function() {
 	
@@ -13,7 +37,7 @@ var SpotifyResultViewer = React.createClass({
 						<SpotifySearchResultListView data={this.props.data} onSelect={this.handleSelection}/>
 					</div> 
 					<div className="col-md-6 right" id="preview">
-						<div>PREVIEW</div>
+						<Preview data={this.state.previewData}></Preview>
 					</div>
 				 </div>
 			   </div>

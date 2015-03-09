@@ -22,16 +22,13 @@ var SpotifyTrack = React.createClass({
 var SpotifyTrackPreview = React.createClass({
 	getInitialState: function() {
 		return {data: null};
-	},
-	componentDidMount: function(){
-		
-		$.get("https://api.spotify.com/v1/tracks/"+this.props.trackId).success(function(data) {
-			this.setState({data: data}); 
-		}.bind(this));
-	
 	}
 	,
 	render: function() {
+	
+		$.get("https://api.spotify.com/v1/tracks/"+this.props.trackId).success(function(data) {
+			this.setState({data: data}); 
+		}.bind(this));	
 	
 		var elem = <p></p>
 		
@@ -40,7 +37,17 @@ var SpotifyTrackPreview = React.createClass({
 			elem=<div className="container-fluid" style={{"margin-top":"20px"}}>
 					<div className="row-fluid">
 						<div className="col-md-6">
-							<div>Album Info</div>
+							<div>
+								<h5>Artist</h5>
+								<p><h3 style={{"margin-top": "0px","color":"lightblue"}}>{this.state.data.artists[0].name}</h3></p>
+								
+								<h5>Name</h5>
+								<p><h3 style={{"margin-top": "0px", "color":"lightblue"}}>{this.state.data.name}</h3></p>
+								
+							<a href={this.state.data.uri}>
+								<img src="http://zotobi.com/wp-content/uploads/2014/08/Spotify-white.png" style={{"width":"128"}}/>
+						</a>
+							</div>
 						</div>
 						<div className="col-md-6" style={{"align":"right", "text-align":"right"}}>
 							<a href={this.state.data.album.uri}><img className="bigPic" src={this.state.data.album.images[0].url} /></a>
