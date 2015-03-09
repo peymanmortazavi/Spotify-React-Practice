@@ -1,0 +1,44 @@
+.left {
+	
+	border-radius: 10px;
+	overflow: scroll;
+	margin-bottom: 15px;
+	margin-top: 60px;
+	background-color: #006E99
+	
+}
+
+.right {
+	
+/*	border-radius: 10px;*/
+	overflow: scroll;
+	margin-bottom: 15px;
+	margin-top: 60px;
+/*	background-color: #006E99*/
+	
+}
+
+.artistView {
+	
+		background-color: rgba(0,0,0, 0.2);
+		padding: 0px;
+		margin-bottom: 1px;
+}
+
+.progress {
+	background-color: gray;
+	margin: 10px;
+	margin-top: 6px;
+	float: right;
+	width: 50%;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.bigPic {
+	
+	border-radius: 5px;
+	width: 128px;
+	height: 128px;
+	
+}
